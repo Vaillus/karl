@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5a37cea37a640bb69e695f07"},"name":"testclothes"}
+{"_id":{"$oid":"5a37d0077a640bb69e695f08"},"name":"regular blue jeans","category":"pants","bodyparts":[4.0,11.0,12.0,14.0,15.0],"colors":"blue","fabrics":"jean","temperature":5.0,"brands":"Zara"}
+{"_id":{"$oid":"5a37db13f128eb034baa5578"},"name":"regular white tshirt","category":"tshirt","bodyparts":[2,3,4,5,8],"colors":"white","fabrics":"cotton","temperature":1}
+{"_id":{"$oid":"5a37db5af128eb034baa558c"},"name":"regular red tshirt","category":"tshirt","bodyparts":[2,3,4,5,8],"colors":"red","fabrics":"cotton","temperature":1}
+{"_id":{"$oid":"5a37dd1bf128eb034baa5597"},"name":"regular orange tshirt","category":"tshirt","bodyparts":[2,3,4,5,8],"colors":"orange","fabrics":"cotton","temperature":1}
+{"_id":{"$oid":"5a37dd1bf128eb034baa5598"},"name":"regular pink tshirt","category":"tshirt","bodyparts":[2,3,4,5,8],"colors":"pink","fabrics":"cotton","temperature":1}
