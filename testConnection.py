@@ -8,7 +8,6 @@ import pprint
 client = MongoClient('localhost', 27017)
 db = client.karl
 collection = db.clothes
-pprint.pprint(collection.find()[2])
 
 for i in range(0, 30):
-	pprint.pprint(collection.find()[i])
+	pprint.pprint(collection.find({'category': 'tshirt'})[i])
