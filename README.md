@@ -5,4 +5,4 @@ Pour faire marcher tout ca, vous allez avoir besoin de:
   - je sais pas si la commande marche si on n'a pas préalablement créé la db 'karl' dans laquelle on a créé la collection 'clothes'
   - le faire si ca ne marche pas
 - lancer le fichier .py apres avoir installé les packages spécifiés dans ce dernier (en commentaire)
-benoit went there
+
