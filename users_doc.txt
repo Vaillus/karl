@@ -1,0 +1,5 @@
+user:
+pseudo
+age?
+genre
+
