@@ -1,6 +1,7 @@
 from pymongo import MongoClient
-import pprint
+#import pprint
 import json
+import outfit
 
 #To make the following line work, make sure that mongod is running on your computer.
 #To do so, install mongoDB and run the command: 'sudo service mongod start'
@@ -14,7 +15,8 @@ import json
 #pprint(data)
 with open('clothes.json') as json_data:
     d = json.load(json_data)
-    
-for i in range(1, len(d)):
-    if (d[i]['category'] == 'tshirt'):
-        print(d[i])
+
+outfit = outfit.getOutfit(d)
+#socks = outfit.getClothesbyCat(d, 'socks')
+for i in range(0, len(outfit)):
+    print(outfit[i]['name'])
