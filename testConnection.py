@@ -1,7 +1,8 @@
 #python -m pip install pymongo
-import pymongo
+#import pymongo
 from pymongo import MongoClient
 import pprint
+
 
 #To make the following line work, make sure that mongod is running on your computer.
 #To do so, install mongoDB and run the command: 'sudo service mongod start'
@@ -10,4 +11,5 @@ db = client.karl
 collection = db.clothes
 
 for i in range(0, 30):
-	pprint.pprint(collection.find({'category': 'tshirt'})[i])
+	pprint.pprint(collection.find()[i])
+    

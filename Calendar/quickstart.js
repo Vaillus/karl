@@ -13,7 +13,7 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
 var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 
 // Load client secrets from a local file.
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+fs.readFile('Calendar/client_secret.json', function processClientSecrets(err, content) {
   if (err) {
     console.log('Error loading client secret file: ' + err);
     return;
@@ -46,7 +46,6 @@ function authorize(credentials, callback) {
     } else {
       oauth2Client.credentials = JSON.parse(token);
       var events = callback(oauth2Client);
-      console.log(events);          
     }
   });
 }
