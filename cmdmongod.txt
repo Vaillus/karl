@@ -1,0 +1,13 @@
+sudo service mongod start
+sudo service mongod stop
+sudo service mongod restart
+mongo --host 127.0.0.1:27017
+
+mongoimport --jsonArray --db karl --collection clothes --file clothesPopulation.json
+mongoimport --db karl --collection clothes --file clothes.json
+
+mongoexport --db karl --collection clothes --out clothesOut.json
+
+use karl
+db.clothes.find()
+
