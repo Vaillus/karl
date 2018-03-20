@@ -1,5 +1,3 @@
-from pymongo import MongoClient
-#import pprint
 import json
 import outfit
 
@@ -9,13 +7,13 @@ import outfit
 #db = client.karl
 #collection = db.clothes
 
-#for i in range(0, 30):
-#	pprint.pprint(collection.find({'category':'tshirt'})[i])
-#data = json.load(open('clothes.json','r'))
-#pprint(data)
 with open('clothes.json') as json_data:
-    d = json.load(json_data)
+    clothes = json.load(json_data)
 
+#with open('users.json') as json_data:
+ #   users = json.load(json_data)
+users = open('users.json')
+print(users[0]);
 outfit = outfit.getOutfit(d)
 #socks = outfit.getClothesbyCat(d, 'socks')
 for i in range(0, len(outfit)):
