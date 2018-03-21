@@ -22,4 +22,5 @@ with open('clothes.json') as json_data:
     
 for i in range(1, len(clothes)):
     if (clothes[i]['category'] == "jacket" or clothes[i]['category'] == "pants" or clothes[i]['category'] == "tshirt" or clothes[i]['category'] == "hoodie" or clothes[i]['category'] == "long sleeves tshirt" or clothes[i]['category'] == "sweater" or clothes[i]['category'] == "short"):
-        print(clothes[i]['name'])
+print(clothes[i]['name'])
+
