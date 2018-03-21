@@ -1,5 +1,5 @@
 import json
-import outfit
+#import outfit
 
 #To make the following line work, make sure that mongod is running on your computer.
 #To do so, install mongoDB and run the command: 'sudo service mongod start'
@@ -12,9 +12,14 @@ with open('clothes.json') as json_data:
 
 #with open('users.json') as json_data:
  #   users = json.load(json_data)
-users = open('users.json')
-print(users[0]);
-outfit = outfit.getOutfit(d)
+#users = open('users.json')
+#print(users[0]);
+#outfit = outfit.getOutfit(clothes)
 #socks = outfit.getClothesbyCat(d, 'socks')
-for i in range(0, len(outfit)):
-    print(outfit[i]['name'])
+
+#for i in range(0, len(outfit)):
+#    print(outfit[i])
+    
+for i in range(1, len(clothes)):
+    if (clothes[i]['category'] == "jacket" or clothes[i]['category'] == "pants" or clothes[i]['category'] == "tshirt" or clothes[i]['category'] == "hoodie" or clothes[i]['category'] == "long sleeves tshirt" or clothes[i]['category'] == "sweater" or clothes[i]['category'] == "short"):
+        print(clothes[i]['name'])
