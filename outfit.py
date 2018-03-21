@@ -6,16 +6,23 @@ Created on Mon Mar 19 12:40:27 2018
 @author: hugo
 """
 from random import randint
+import OfWeather
 
-#
-def getOutfit(db):
-    outfit = list();
-    clothesCat = ['socks','shoes','underwear','pants','tshirt','jacket']
-    
+#takes a dataset of clothes and send a subset of chosen clothes according to their categories
+def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = list(),):
+    if len(outfit):
+        if len(categories):
+            if(len(bpNeeded)):
+                
+    if not categories and not outfit:
+        categories = ['pants','tshirt','jacket']
+        
+    db = OfWeather.clothesWeather(db,9,"cloudy")
     for cat in clothesCat:
         outfit.append(getRandClothebyCat(db,cat))
     return outfit
 
+#takes a clothes dataset and a clothe category, sends back all the clothes of this category
 def getClothesbyCat(db, cat):
     clothes = list();
     for i in range(1, len(db)):
@@ -23,8 +30,9 @@ def getClothesbyCat(db, cat):
             clothes.append(db[i])
     return clothes
 
+#takes a clothes dataset and a clothe category, and returns a single clothe of this category
 def getRandClothebyCat(db, cat):
-    clothes = getClothesbyCat(db, cat);
+    clothes = getClothesbyCat(db, cat)
     clothe = clothes[randint(0, len(clothes)-1)]
     return clothe
     
