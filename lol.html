@@ -1,3 +1,5 @@
+<script type="text/javascript">
+	
 
 
 var fs = require('fs');
@@ -46,6 +48,7 @@ function authorize(credentials, callback) {
     } else {
       oauth2Client.credentials = JSON.parse(token);
       var events = callback(oauth2Client);
+      console.log(events);
     }
   });
 }
@@ -73,7 +76,7 @@ function getNewToken(oauth2Client, callback) {
     oauth2Client.getToken(code, function(err, token) {
       if (err) {
         console.log('Error while trying to retrieve access token', err);
-        return;
+        //return;
       }
       oauth2Client.credentials = token;
       storeToken(token);
@@ -138,3 +141,5 @@ function listEvents(auth) {
     return events;
   });
 }
+
+</script>
