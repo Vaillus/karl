@@ -1,6 +1,1 @@
-[	
-	{
-		"pseudo":"hugovaillaud",
-		"genre":"m"
-	}
-]
+[{"_id":{"$oid":"5aafe64c9f74f56020f682d5"},"pseudo":"hugovaillaud","genre":"m"},{"_id":{"$oid":"5aafe64c9f74f56020f682d6"},"pseudo":"paulinesanson","genre":"f"},{"_id":{"$oid":"5aafe64c9f74f56020f682d7"},"pseudo":"kathrynschutte","genre":"f"},{"_id":{"$oid":"5aafe64c9f74f56020f682d8"},"pseudo":"benoitleguay","genre":"m"},{"_id":{"$oid":"5aafe64c9f74f56020f682d9"},"pseudo":"marinelefort","genre":"f"},{"_id":{"$oid":"5aafe64c9f74f56020f682da"},"pseudo":"lisagriere","genre":"f"}]
