@@ -19,8 +19,11 @@ with open('clothes.json') as json_data:
 
 #for i in range(0, len(outfit)):
 #    print(outfit[i])
-    
-for i in range(1, len(clothes)):
-    if (clothes[i]['category'] == "jacket" or clothes[i]['category'] == "pants" or clothes[i]['category'] == "tshirt" or clothes[i]['category'] == "hoodie" or clothes[i]['category'] == "long sleeves tshirt" or clothes[i]['category'] == "sweater" or clothes[i]['category'] == "short"):
-print(clothes[i]['name'])
+newClothes = list()
+for i in range(1, len(clothes)-1):
+	newClothes.append(clothes[i])
+#for i in range(0, len(clothes)-1):
+#	if (clothes[i]['category'] == "jacket" or clothes[i]['category'] == "pants" or clothes[i]['category'] == "tshirt" or clothes[i]['category'] == "hoodie" or clothes[i]['category'] == "long sleeves tshirt" or clothes[i]['category'] == "sweater" or clothes[i]['category'] == "short"):
+#		print(newClothes[i]['name'])
 
+print(newClothes[0])
