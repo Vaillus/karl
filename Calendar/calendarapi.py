@@ -10,7 +10,7 @@ from Naked.toolshed.shell import muterun_js
 '''
 Take the client id code and return the upcomings events
 '''
-def calendarapi(id):
+def getcalendar(id):
     calendar = muterun_js('Calendar/quickstart.js')
     calendarapi = calendar.stdout.decode("utf-8")
     return calendarapi
