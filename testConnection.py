@@ -28,5 +28,6 @@ for i in range(1, len(clothes)-1):
 
 print(newClothes[0])
 myOutfit = outfit.getOutfit(newClothes)
-myOutfit = outfit.getOutfit(db=newClothes,outfit=myOutfit,bpNeeded=[1])
+print(myOutfit)
+myOutfit = outfit.getOutfit(db=newClothes, outfit=myOutfit, bpNeeded=[1])
 print(myOutfit)

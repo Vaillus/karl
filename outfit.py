@@ -29,7 +29,6 @@ def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = l
 
 	"""if the outfit and bodyparts needed are specified""" #to improve
 	if len(outfit) and not(len(categories)) and len(bpNeeded) :
-
 		outfit.append(getBestClotheBP(db, bpNeeded))
 
 
@@ -59,7 +58,6 @@ def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = l
 	if not(len(categories)) and not(len(bpNeeded)) :
 
 		outfit = makeSimpleOutfit(db, outfit)
-
 
 	return outfit
 
@@ -117,12 +115,15 @@ def compBodyParts(bpNeeded, bpComp):
 
 #returns an optimum clothe given a set of bodyparts
 def getBestClotheBP(db, bpNeeded) :
-	db=np.array(db)
-	score = np.array(list())
-	for i in range(0,len(db)-1):
-		np.append(score,compBodyParts(db[i]['bodyparts'],bpNeeded))
 
-	return getRandClothe(db[np.argwhere(score == np.amax(score))])
+	db=np.array(db)
+	score = np.empty(0)
+
+	for i in range(0,len(db)-1):
+		score = np.append(score,compBodyParts(db[i]['bodyparts'],bpNeeded))
+
+	clothe = getRandClothe(db[np.argwhere(score == np.amax(score))])
+	return clothe.tolist()
 
 
 #makes a default outfit with a tshirt, a jacket and pants
