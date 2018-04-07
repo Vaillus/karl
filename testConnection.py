@@ -1,5 +1,5 @@
 import json
-#import outfit
+import outfit
 
 #To make the following line work, make sure that mongod is running on your computer.
 #To do so, install mongoDB and run the command: 'sudo service mongod start'
@@ -27,3 +27,6 @@ for i in range(1, len(clothes)-1):
 #		print(newClothes[i]['name'])
 
 print(newClothes[0])
+myOutfit = outfit.getOutfit(newClothes)
+myOutfit = outfit.getOutfit(db=newClothes,outfit=myOutfit,bpNeeded=[1])
+print(myOutfit)
