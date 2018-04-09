@@ -19,9 +19,9 @@ def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = l
                 for category in categories:
                     clothes = np.array(getClothesbyCat(db,category))
                     bpCnts = np.array()
-                    for cloth in clothes:
+                    for clothe in clothes:
                         bpCnt = 0;
-                        for bp in cloth['bodyparts']:
+                        for bp in clothe['bodyparts']:
                             if bp in bpNeeded:
                                 bpCnt = bpCnt + 1;
                     # add the current count to the list of counts
