@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Button, Image } from 'react-native';
  
-export class Profile extends React.Component {
-  
+export default class Profile extends React.Component{
+
     constructor(props) {
       super(props);
       this.state = {isLoaded: false};

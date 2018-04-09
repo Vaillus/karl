@@ -5,11 +5,31 @@ import { Text, View, Button , StyleSheet, TouchableOpacity} from 'react-native';
 import Expo from 'expo';
 
 
+export default class Signin extends React.Component{
 
-async function signInWithGoogleAsync() {
+	static navigationOptions= {
+		title: 'Sign in',
+
+	};
+
+
+
+	render (){
+		return (
+			<View>
+				<Button style={styles.btn}
+	            title="SignIn Google"
+	            onPress={() => this.signInWithGoogleAsync()}
+	          	/>
+	        </View>
+			
+	    );
+	}
+
+	async signInWithGoogleAsync() {
   try {
 	    const result = await Expo.Google.logInAsync({
-	      androidClientId: 813609193414-ddepoddumf3hun328ubkoocaunrfgu18.apps.googleusercontent.com,
+	      androidClientId: '813609193414-ddepoddumf3hun328ubkoocaunrfgu18.apps.googleusercontent.com',
 	      scopes: ['profile', 'email'],
 	    });
 
@@ -25,23 +45,6 @@ async function signInWithGoogleAsync() {
         return {error: true};
       }
   }
-
-export default class Signin extends React.Component{
-
-	static navigationOptions= {
-		title: 'Sign in',
-
-	};
-
-	render (){
-		return (
-			<Button style={styles.btn}
-            title="SignIn Google"
-            onPress={() => this.signInWithGoogleAsync()}
-          	/>
-			
-	    );
-	}
 
 }
   
