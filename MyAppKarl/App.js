@@ -1,7 +1,9 @@
 import React from 'react';
 
-import Login from './components/Login'
-import Signin from './components/Signin'
+import Login from './components/Login';
+import Signin from './components/Signin';
+import Ootd from './components/Ootd';
+import Wardrobe from './components/Wardrobe';
 
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { TabNavigator } from 'react-navigation';
@@ -11,7 +13,9 @@ import { TabNavigator } from 'react-navigation';
 const Tabs = TabNavigator(
 {
   Signin : {screen : Signin},
-  Login: { screen : Login}
+  Login: { screen : Login},
+  Ootd : {screen : Ootd},
+  Wardrobe: { screen : Wardrobe},
 }, 
 {
     tabBarPosition: 'bottom',
@@ -42,6 +46,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: null,
-    paddingTop: 100,
+    paddingTop: 20,
   }
 });

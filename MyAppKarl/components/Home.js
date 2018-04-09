@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Ootd from './components/Ootd'
-import Wardrobe from './components/Wardrobe'
+import Ootd from './Ootd'
+import Wardrobe from './Wardrobe'
 
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { TabNavigator } from 'react-navigation';
@@ -28,10 +28,14 @@ const Tabs = TabNavigator(
 );
 
 export default class Home extends React.Component {
+  
+  static navigationOptions = {
+    title: 'Home',
+  };
   render() {
     return (
       <View style={styles.container}>
-        {/*<StatusBar hidden />*/}
+        
         <Tabs/>
       </View>
     );

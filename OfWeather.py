@@ -9,6 +9,7 @@ from Naked.toolshed.shell import muterun_js
 import json
 
 
+<<<<<<< HEAD
 #function that takes climate, temperature and clothes as argument, and returns appropriate clothes 
 def clothesWeather(weather):
     selectedClothes = list()
@@ -20,11 +21,23 @@ def clothesWeather(weather):
         #appel bdd (where temp < 8 and category !=  hoodie)
                         
     return selectedClothes
+=======
+#function that takes climate, temperature and clothes as argument, and returns appropriate clothes
+def clothesWeather(clothes, temp, clim):
+    newClothes = list()
+    for cloth in clothes:
+        #add the fundamental clothes
+        #if cloth['category'] = "tshirt":
+        #   newClothes.append(cloth)
 
-def outfitWeather(clothes, temp, clim):
-    clothes = clothesWeather(clothes, temp, clim)
-            
-def getClothesCold():
-    clothes = muterun_js('getClothes_cold.js')
-    selectedClothes = json.loads(clothes.stdout)
-    return selectedClothes
+        if temp > 23:
+            if cloth['temperature'] < 5:
+                newClothes.append(cloth)
+        elif temp < 10:
+            if cloth['category'] != "short":
+                newClothes.append(cloth)
+        else:
+            newClothes.append(cloth)
+
+    return newClothes
+
