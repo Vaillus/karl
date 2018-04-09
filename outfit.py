@@ -151,6 +151,7 @@ def makeSimpleOutfit(db, outfit):
 			outfit.append(getRandClothe(db,categories[0][i]))
 
 	return outfit
+<<<<<<< HEAD
 
 
 #checks if there is no redundancy between the categories in the categories set and
@@ -190,3 +191,5 @@ def checkOutfitConflict(db, outfit, categories, bodyPartsNeeded, undesired) :
 	db = newdb
 
 	return [db, outfit, categories, bodyPartsNeeded]
+=======
+>>>>>>> ae6e437ab2a82b4c6837268d4b54883762d26aab

@@ -5,7 +5,23 @@ Created on Tue Mar 20 16:14:05 2018
 
 @author: hugo
 """
+from Naked.toolshed.shell import muterun_js
+import json
 
+
+<<<<<<< HEAD
+#function that takes climate, temperature and clothes as argument, and returns appropriate clothes 
+def clothesWeather(weather):
+    selectedClothes = list()
+    if weather['temp'] < 5:
+        print(selectedClothes)
+        #appel bdd (where temp > 2 and category !=  short)
+    if weather['temp'] > 23:
+        print(selectedClothes)
+        #appel bdd (where temp < 8 and category !=  hoodie)
+                        
+    return selectedClothes
+=======
 #function that takes climate, temperature and clothes as argument, and returns appropriate clothes
 def clothesWeather(clothes, temp, clim):
     newClothes = list()
@@ -25,10 +41,3 @@ def clothesWeather(clothes, temp, clim):
 
     return newClothes
 
-"""
-def outfitWeather(clothes, temp, clim):
-    clothes = clothesWeather(clothes, temp, clim)
-
-    if temp < 10:
-
-  """
