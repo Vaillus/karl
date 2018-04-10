@@ -4,9 +4,13 @@ import Login from './components/Login';
 import Signin from './components/Signin';
 import Ootd from './components/Ootd';
 import Wardrobe from './components/Wardrobe';
+import Profile from './components/Profile';
+
 
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation'; // Version can be specified in package.json
+
 
 
 
@@ -16,6 +20,7 @@ const Tabs = TabNavigator(
   Login: { screen : Login},
   Ootd : {screen : Ootd},
   Wardrobe: { screen : Wardrobe},
+  Profile: {screen: Profile},
 }, 
 {
     tabBarPosition: 'bottom',

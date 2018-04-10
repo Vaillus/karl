@@ -4,20 +4,14 @@ import { Text, View, TextInput, TouchableOpacity, StyleSheet, Button} from 'reac
 import { StackNavigator} from 'react-navigation';
 import { Actions} from 'react-native-router-flux';
 
-import Home from './Home';
+import Profile from './Profile';
 
-import Routes from '../Routes';
 
-const App = StackNavigator({
-		Home: { screen: Home}
-	});
+
 
 export default class Login extends React.Component{
 
-	skip(){
-		Actions.home();
-	}
-
+	
 	static navigationOptions= {
 		title: 'Log in',
 
@@ -29,6 +23,7 @@ export default class Login extends React.Component{
 
 
 			<View style={styles.loginformcontainer}>
+
 	       		<TextInput underlineColorAndroid='transparent' placeholder='Email' style={styles.textinput} />
 	       		<TextInput underlineColorAndroid='transparent' placeholder='Password' style={styles.textinput} />
 
@@ -40,11 +35,10 @@ export default class Login extends React.Component{
 	       			<Text style={styles.btntext}>FORGOT PASSWORD</Text>
 	       		</TouchableOpacity>
 
-	       		<TouchableOpacity style={styles.btn} onPress = {this.skip}>
+	       		<TouchableOpacity style={styles.btn} >
 	       			<Text style={styles.btntext}>SKIP</Text>
 	       		</TouchableOpacity>
 
-	       			
 	      	</View>
 	    );
 	}
