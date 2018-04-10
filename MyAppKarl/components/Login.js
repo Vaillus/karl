@@ -23,6 +23,7 @@ export default class Login extends React.Component{
 
 
 			<View style={styles.loginformcontainer}>
+
 	       		<TextInput underlineColorAndroid='transparent' placeholder='Email' style={styles.textinput} />
 	       		<TextInput underlineColorAndroid='transparent' placeholder='Password' style={styles.textinput} />
 

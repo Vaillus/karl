@@ -9,6 +9,8 @@ import Profile from './components/Profile';
 
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation'; // Version can be specified in package.json
+
 
 
 
