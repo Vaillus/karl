@@ -153,8 +153,7 @@ def makeSimpleOutfit(db, outfit):
 	return outfit
 
 
-#checks if there is no redundancy between the categories in the categories set and
-#the categories of the clothes in the outfit
+#checks all the conflicts that can happen for the arguments of the function getOutfit, correct them if appropriate
 def checkOutfitConflict(db, outfit, categories, bodyPartsNeeded, undesired) :
 
 	if len(outfit) and len(categories) :
