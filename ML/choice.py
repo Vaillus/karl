@@ -16,24 +16,24 @@ class JSONEncoder(json.JSONEncoder):
             return str(o)
         return json.JSONEncoder.default(self, o)
     
-def makeDecision(myoutfit, decision):
+def makeDecision():
     decision = True
     client = pymongo.MongoClient('mongodb://BenoitLeguay:karlos2018@ds139459.mlab.com:39459/karl')
     db = client.karl
     collection = db.clothes
     cursor = list(collection.find({}))
     myoutfit = outfit.getOutfit(cursor)
+    
     data = {}
+    clothes = {}
     idc = 0
     for clothe in myoutfit:
-        data['idc'+str(idc)] = clothe['_id']
+        clothes['idc'+str(idc)] = clothe['_id']
         idc = idc + 1
         
     data['decision'] = decision
-    db.decision.insert(data)
+    data['clothes'] = clothes
     print(data)
-    json_data = JSONEncoder().encode(data)
-    print(json_data)
     
     
 makeDecision()
