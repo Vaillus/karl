@@ -25,7 +25,7 @@ module.exports = function(router){
 		User.findById(req.params.userId).exec((err, user) => {
 			if(err){
 				console.log("Couldn't find user error : " + err)
-				res.json({"success" : false})
+				res.json({"success" : false, "err"  : err})
 			}else if(user){
 				res.json({"success" : true, "user": user})
 			}else{
@@ -40,9 +40,8 @@ module.exports = function(router){
 		User.find({}, (err, users) => {
 			if(err){
 				console.log("Couldn't find users error : " + err)
-				res.json({"success" : false})
+				res.json({"success" : false, "err"  : err})
 			}else if(users){
-				console.log(users);
 				res.json({"success" : true, "users": users})
 			}else{
 				console.log("Couldn't find users ")
