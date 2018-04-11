@@ -1,5 +1,14 @@
 import React from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
+import {  StackNavigator} from 'react-navigation';
+
+import Ootd from './Ootd';
+import Wardrobe from './Wardrobe';
+
+const Stack = StackNavigator({
+  Ootd: { screen: Ootd },
+  Wardrobe : {screen: Wardrobe}
+});
  
 export default class Profile extends React.Component{
 
@@ -15,7 +24,7 @@ export default class Profile extends React.Component{
         this.saveUserInfo(this.userToken, this.userInfo).then((res) => res.json()).then(data => {
           if(data['success'] == true){
             console.log(data);
-            this.userId = data['id'];
+            this.userId = data['id']["_id"];
             console.log('User successfully saved :'+ this.userId);
             this.setState(previousState => {
               return { isLoaded: true }
@@ -38,6 +47,9 @@ export default class Profile extends React.Component{
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Image source={{uri: userInfo['picture'] }} style={{width: 300, height: 300}} key={this.state.isLoaded} />
           <Text>Hello {userInfo['name']} !</Text>
+          <Button
+              title="Get #OOTD"
+              onPress={() => navigate('Ootd', { userId: this.userId}) }></Button>
         </View>
       );
     }

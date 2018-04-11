@@ -12,6 +12,34 @@ export default class Ootd extends React.Component{
 
 	};
 
+	constructor(props) {
+		super(props);
+		this.state = {isLoaded: false};
+		this.userId = props.navigation.state.params.userId
+		
+		this.getOutfitSuggestion(this.userId).then((response) => response.json()).then(data => {
+		  this.userInfo = data
+		  console.log(this.userInfo);
+		  this.saveUserInfo(this.userToken, this.userInfo).then((res) => res.json()).then(data => {
+			if(data['success'] == true){
+			  console.log(data);
+			  this.userId = data['id']["_id"];
+			  console.log('User successfully saved :'+ this.userId);
+			  this.setState(previousState => {
+				return { isLoaded: true }
+			  })
+			}
+			else{
+			  console.log('Failed to save user: '+data['err']);
+			}
+		  }).catch(function(error) {
+			console.log('There has been a problem with your fetch operation: ' + error.message);
+			throw error;
+		  });
+		  
+		})
+	  }
+
 	render (){
 		return (
 			<View style={styles.container}>
@@ -38,6 +66,7 @@ export default class Ootd extends React.Component{
 	    );
 	}
 }
+
 
 const styles= StyleSheet.create({
 	container: {
