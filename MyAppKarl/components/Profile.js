@@ -23,7 +23,6 @@ export default class Profile extends React.Component{
         console.log(this.userInfo);
         this.saveUserInfo(this.userToken, this.userInfo).then((res) => res.json()).then(data => {
           if(data['success'] == true){
-            console.log(data);
             this.userId = data['id']["_id"];
             console.log('User successfully saved :'+ this.userId);
             this.setState(previousState => {
@@ -49,12 +48,12 @@ export default class Profile extends React.Component{
           <Text>Hello {userInfo['name']} !</Text>
           <Button
               title="Get #OOTD"
-              onPress={() => navigate('Ootd', { userId: this.userId}) }></Button>
+              onPress={() => this.props.navigation.navigate('Ootd', { userId: this.userId}) }></Button>
         </View>
       );
     }
  
-    // Example of using the Google REST API
+    // GET USER INFO FROM GOOGLE
     async getUserInfoGoogle(accessToken) {
       let userInfoResponse = await fetch('https://www.googleapis.com/userinfo/v2/me?access_token=' + accessToken, {
         method: 'GET'
@@ -62,7 +61,7 @@ export default class Profile extends React.Component{
       return userInfoResponse;
     }
 
-    // Example of using the Google REST API
+    // SAVE USER INFO
     async saveUserInfo(userToken, userInfo) {
 
     var content = { 
@@ -78,8 +77,6 @@ export default class Profile extends React.Component{
       })
     };
     
-    console.log(content);
-
     var myRequest = new Request('http://10.0.2.2:8080/user', content);
 
     let postUser = await fetch(myRequest);

@@ -18,26 +18,15 @@ export default class Ootd extends React.Component{
 		this.userId = props.navigation.state.params.userId
 		
 		this.getOutfitSuggestion(this.userId).then((response) => response.json()).then(data => {
-		  this.userInfo = data
-		  console.log(this.userInfo);
-		  this.saveUserInfo(this.userToken, this.userInfo).then((res) => res.json()).then(data => {
-			if(data['success'] == true){
-			  console.log(data);
-			  this.userId = data['id']["_id"];
-			  console.log('User successfully saved :'+ this.userId);
-			  this.setState(previousState => {
-				return { isLoaded: true }
-			  })
-			}
-			else{
-			  console.log('Failed to save user: '+data['err']);
-			}
-		  }).catch(function(error) {
-			console.log('There has been a problem with your fetch operation: ' + error.message);
-			throw error;
-		  });
-		  
-		})
+			this.outfit = data["clothes"];		 
+			this.outfit_images = new Array(this.outfit.length)
+			var i=0
+			this.outfit.forEach(cloth => {
+			  this.outfit_images[i] = cloth["_id"]+".png" ;
+			  i++
+		  }); 
+		  console.log(this.outfit_images);
+		});
 	  }
 
 	render (){
@@ -45,10 +34,7 @@ export default class Ootd extends React.Component{
 			<View style={styles.container}>
 				<Text style={styles.title}> Your #OOTD </Text>
 				<View style={styles.outfitContainer}>
-					<Image style= {styles.outfitItems}  source={require('./images/clothes/tshirt1.png')} />
-				  	<Image style= {styles.outfitItems}  source={require('./images/clothes/hoodie1.jpg')}  />
-			        <Image style= {styles.outfitItems}  source={require('./images/clothes/pants1.jpg')}  />
-
+					<Image style={styles.outfitItems} source={this.outfit_images} />
 				</View>
 
 				<View style={styles.btnContainer}>
@@ -65,8 +51,19 @@ export default class Ootd extends React.Component{
 				      	
 	    );
 	}
-}
 
+
+	async getOutfitSuggestion(userId) {
+	
+		var myRequest = new Request('http://10.0.2.2:8080/clothes/outfit/test/'+ userId);
+	
+		let getOutfit = await fetch(myRequest);
+		console.log("GET OUTFIT RESPONSE:");
+		console.log(getOutfit);
+		 
+		return getOutfit;
+		}
+}
 
 const styles= StyleSheet.create({
 	container: {

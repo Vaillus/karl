@@ -17,8 +17,11 @@ module.exports = function(router){
 			if(err){
 				console.log("Couldn't register : " + err)
 				res.json({"success" : false, "err"  : err})
-			}else{
+			}else if(id){
 				res.json({"success" : true, "id": id})
+			}
+			else {
+				res.json({"success" : false})
 			}
 		})
 		
@@ -54,8 +57,26 @@ module.exports = function(router){
 		})
 	})
 
+	router.get('/clothes/outfit/:userId', (req, res) => {
 
-	router.get('/clothes/outfitsuggestion/test/:userId', (req, res) => {
+		Cloth.find({}, (err, clothes) => {
+			if(err){
+				console.log("Couldn't find clothes error : " + err)
+				res.json({"success" : false})
+			}else if(clothes){
+				// res.json(call python script (clothes))
+
+			}else{
+				console.log("Couldn't find clothes ")
+				res.json({"success" : false})
+			}
+		})
+	})
+		
+
+	router.get('/clothes/outfit/test/:userId', (req, res) => {
+
+		
 		userId = req.params.userId;
 		res.json({
 			"success": true,
