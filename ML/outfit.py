@@ -18,12 +18,12 @@ from random import randint
 def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = list()) :
 
 	[db, outfit, categories, bpNeeded] = checkOutfitConflict(db, outfit, categories, bpNeeded, undesired)
-
+	
 	"""if outfit, categories and bodyparts needed are specified"""
 	if len(outfit) and len(categories) and len(bpNeeded) :
 		for category in categories:
 
-			clothes = np.array(getClothesbyCat(db,category))
+			clothes = np.array(getClothesbyCat(db, category))
 
 			outfit.append(getBestClotheBP(clothes, bpNeeded))
 
@@ -66,7 +66,8 @@ def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = l
 	if not(len(categories)) and not(len(bpNeeded)) :
 
 		outfit = makeSimpleOutfit(db, outfit)
-
+        
+    
 	return outfit
 
 

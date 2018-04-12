@@ -3,7 +3,7 @@
 """
 Created on Mon Apr  9 14:42:10 2018
 
-@author: hugo
+@author: benoit
 """
 import json
 import pymongo
@@ -20,10 +20,11 @@ def makeDecision():
     decision = True
     client = pymongo.MongoClient('mongodb://BenoitLeguay:karlos2018@ds139459.mlab.com:39459/karl')
     db = client.karl
-    collection = db.clothes
+    collection = db.cloths
     cursor = list(collection.find({}))
+    print(cursor)
     myoutfit = outfit.getOutfit(cursor)
-    
+
     data = {}
     clothes = {}
     idc = 0
@@ -33,7 +34,7 @@ def makeDecision():
         
     data['decision'] = decision
     data['clothes'] = clothes
-    print(data)
+    #print(data)
     
     
 makeDecision()
