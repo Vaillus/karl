@@ -5,10 +5,13 @@ Created on Mon Apr  9 14:42:10 2018
 
 @author: hugo
 """
+
+import sys
 import json
 import outfit
 import testConnection
 from bson import ObjectId
+
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -18,22 +21,68 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-def makeDecision(myoutfit, decision):
-    decision = True
+def makeDecision(decision):
 
     cursor = testConnection.getDataBase()
 
     myoutfit = outfit.getOutfit(cursor)
+
     data = {}
+    clothes = {}
     idc = 0
     for clothe in myoutfit:
-        data['idc'+str(idc)] = clothe['_id']
+        clothes['idc'+str(idc)] = clothe['_id']
         idc = idc + 1
 
     data['decision'] = decision
-    print(data)
-    json_data = JSONEncoder().encode(data)
-    print(json_data)
+    data['clothes'] = clothes
+    return data
 
 
-#makeDecision()
+
+"""
+Ask a yes/no question via raw_input() and return their answer.
+
+"question" is a string that is presented to the user.
+"default" is the presumed answer if the user just hits <Enter>.
+	It must be "yes" (the default), "no" or None (meaning
+	an answer is required of the user).
+
+The "answer" return value is True for "yes" or False for "no".
+"""
+def query_yes_no(question, default="yes"):
+
+    valid = {"yes": True, "y": True, "ye": True,
+             "no": False, "n": False}
+    if default is None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = input().lower()
+        if default is not None and choice == '':
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' "
+                             "(or 'y' or 'n').\n")
+
+
+
+def generateBayes(db):
+	clothes = outfit.getOutfit(db)
+	for cloth in clothes:
+		print(cloth['name'])
+	choice = query_yes_no("Voulé vou maitre cette outfitte?")
+
+	print(makeDecision(choice))
+	return True
+
+generateBayes(testConnection.getDataBase())
