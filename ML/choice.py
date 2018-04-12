@@ -5,24 +5,26 @@ Created on Mon Apr  9 14:42:10 2018
 
 @author: benoit
 """
+
+import sys
 import json
-import pymongo
 import outfit
+import testConnection
 from bson import ObjectId
+
+
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
             return str(o)
         return json.JSONEncoder.default(self, o)
-    
-def makeDecision():
-    decision = True
-    client = pymongo.MongoClient('mongodb://BenoitLeguay:karlos2018@ds139459.mlab.com:39459/karl')
-    db = client.karl
-    collection = db.cloths
-    cursor = list(collection.find({}))
-    print(cursor)
+
+
+
+def makeDecision(decision):
+
+    cursor = testConnection.getDataBase()
     myoutfit = outfit.getOutfit(cursor)
 
     data = {}
@@ -31,10 +33,58 @@ def makeDecision():
     for clothe in myoutfit:
         clothes['idc'+str(idc)] = clothe['_id']
         idc = idc + 1
-        
+
     data['decision'] = decision
     data['clothes'] = clothes
-    #print(data)
-    
-    
-makeDecision()
+
+    return data
+
+
+
+"""
+Ask a yes/no question via raw_input() and return their answer.
+
+"question" is a string that is presented to the user.
+"default" is the presumed answer if the user just hits <Enter>.
+	It must be "yes" (the default), "no" or None (meaning
+	an answer is required of the user).
+
+The "answer" return value is True for "yes" or False for "no".
+"""
+def query_yes_no(question, default="yes"):
+
+    valid = {"yes": True, "y": True, "ye": True,
+             "no": False, "n": False}
+    if default is None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = input().lower()
+        if default is not None and choice == '':
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' "
+                             "(or 'y' or 'n').\n")
+
+
+
+def generateBayes(db):
+	clothes = outfit.getOutfit(db)
+	for cloth in clothes:
+		print(cloth['name'])
+	choice = query_yes_no("Voulé vou maitre cette outfitte?")
+
+	print(makeDecision(choice))
+	return True
+
+generateBayes(testConnection.getDataBase())
+>>>>>>> 557c978f4e264b1eb7c0cc000e56d7aa9e7b64a9

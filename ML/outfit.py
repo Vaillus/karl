@@ -5,6 +5,7 @@ Created on Mon Mar 19 12:40:27 2018
 
 @author: hugo
 """
+
 import numpy as np
 from random import randint
 
