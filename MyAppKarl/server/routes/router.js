@@ -12,6 +12,10 @@ mongoose.connect(dburl.url, (err) =>{
 		console.log('Not connected to MongoDB database: ' + err)
 	}else{
 		console.log('Successfully connected to MongoDB database')
+		//trying to get collection names
+		//mongoose.connection.db.listCollections().toArray(function (err,names){
+		//	console.log(names);
+		//})
 	}
 })
 

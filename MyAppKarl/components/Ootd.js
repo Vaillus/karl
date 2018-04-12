@@ -12,15 +12,29 @@ export default class Ootd extends React.Component{
 
 	};
 
+	constructor(props) {
+		super(props);
+		this.state = {isLoaded: false};
+		this.userId = props.navigation.state.params.userId
+		
+		this.getOutfitSuggestion(this.userId).then((response) => response.json()).then(data => {
+			this.outfit = data["clothes"];		 
+			this.outfit_images = new Array(this.outfit.length)
+			var i=0
+			this.outfit.forEach(cloth => {
+			  this.outfit_images[i] = cloth["_id"]+".png" ;
+			  i++
+		  }); 
+		  console.log(this.outfit_images);
+		});
+	  }
+
 	render (){
 		return (
 			<View style={styles.container}>
 				<Text style={styles.title}> Your #OOTD </Text>
 				<View style={styles.outfitContainer}>
-					<Image style= {styles.outfitItems}  source={require('./images/clothes/tshirt1.png')} />
-				  	<Image style= {styles.outfitItems}  source={require('./images/clothes/hoodie1.jpg')}  />
-			        <Image style= {styles.outfitItems}  source={require('./images/clothes/pants1.jpg')}  />
-
+					<Image style={styles.outfitItems} source={this.outfit_images} />
 				</View>
 
 				<View style={styles.btnContainer}>
@@ -37,6 +51,18 @@ export default class Ootd extends React.Component{
 				      	
 	    );
 	}
+
+
+	async getOutfitSuggestion(userId) {
+	
+		var myRequest = new Request('http://10.0.2.2:8080/clothes/outfit/test/'+ userId);
+	
+		let getOutfit = await fetch(myRequest);
+		console.log("GET OUTFIT RESPONSE:");
+		console.log(getOutfit);
+		 
+		return getOutfit;
+		}
 }
 
 const styles= StyleSheet.create({

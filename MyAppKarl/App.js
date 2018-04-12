@@ -17,7 +17,6 @@ import { StackNavigator } from 'react-navigation'; // Version can be specified i
 const Tabs = TabNavigator(
 {
   Signin : {screen : Signin},
-  Login: { screen : Login},
   Ootd : {screen : Ootd},
   Wardrobe: { screen : Wardrobe},
   Profile: {screen: Profile},
