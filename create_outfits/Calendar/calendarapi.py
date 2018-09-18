@@ -14,4 +14,4 @@ def getcalendar(id):
     calendar = muterun_js('Calendar/quickstart.js')
     calendarapi = calendar.stdout.decode("utf-8")
     return calendarapi
-    
+
