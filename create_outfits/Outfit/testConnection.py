@@ -1,13 +1,17 @@
-#import json
+#  import json
 import outfit
 import pymongo
 import re
 
-#To make the following line work, make sure that mongod is running on your computer.
-#To do so, install mongoDB and run the command: 'sudo service mongod start'
+#  To make the following line work, make sure that mongod is running on your computer.
+#  To do so, install mongoDB and run the command: 'sudo service mongod start'
 
 #returns the dataBase. Not to be used on the long term
 def getDataBase():
+	"""
+
+	:return: clothes database
+	"""
 	file = open("donnéesSecrètes.txt")
 	secretData = re.sub('\\n', '', file.read())
 
