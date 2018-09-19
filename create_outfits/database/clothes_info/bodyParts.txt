@@ -1,0 +1,17 @@
+BODYPARTS DOCUMENTATION
+1: tête
+2: buste
+3: abdomen
+4: taille/hanches
+5: épaule-coude droit
+6: avant-bras droit
+7: main droite
+8: épaule-coude gauche
+9: avant-bras gauche
+10: main gauche
+11: cuisse droite
+12: tibia droit
+13: pied droit
+14: cuisse gauche
+15: tibia gauche
+16: pied gauche
