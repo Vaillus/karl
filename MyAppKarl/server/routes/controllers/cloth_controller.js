@@ -59,14 +59,23 @@ module.exports = function(router){
 	})
 
 	router.get('/clothes/outfit/:userId', (req, res) => {
+		console.log(process.cwd());
 
-		Cloth.find({}, (err, clothes) => {
+		Cloth.find({},{_id:0}, (err, clothes) => {
 			if(err){
 				console.log("Couldn't find clothes error : " + err)
 				res.json({"success" : false})
 			}else if(clothes){
-				// res.json(call python script (clothes))
-
+				clothes = '['+clothes+']';
+				fixedClothes = '{"clothes" : '+clothes+'}';
+				fClothes = fixedClothes.toString().replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ').replace(/'/g, '"').replace(/\n/g, ' ');
+				var outfit = spawn('python',['scriptgetOutfit.py',  fClothes]);//"../../ML/"
+				outfit.stdout.on('data', function(data)
+				{
+					myoutfit = data.toString().replace(/'/g, '"');
+				    response = JSON.parse(myoutfit);
+				    res.json({"success" : true, "outfit": response})
+				});
 			}else{
 				console.log("Couldn't find clothes ")
 				res.json({"success" : false})
