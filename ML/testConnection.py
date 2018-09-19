@@ -1,5 +1,5 @@
 #import json
-#import outfit
+import outfit
 import pymongo
 import re
 
@@ -14,7 +14,7 @@ def getDataBase():
 	client = pymongo.MongoClient(secretData)
 	db = client.karl
 	collection = db.cloths
-	#print(collection.find()[0])
+	print(collection.find()[0])
 	clothes = list(collection.find({}))
 	return clothes
 
@@ -24,13 +24,7 @@ def getDataBase():
 clothes = getDataBase()
 #print(clothes)
 
-newClothes = list()
-
-for i in range(1, len(clothes)-1):
-	newClothes.append(clothes[i])
-
-#print(newClothes[0])
-#myOutfit = outfit.getOutfit(newClothes)
-#print(myOutfit)
-#myOutfit = outfit.getOutfit(db=newClothes, outfit=myOutfit, bpNeeded=[1])
-#print(myOutfit)
+myOutfit = outfit.getOutfit(clothes)
+#outfit.printClothesNames(myOutfit)
+myOutfit = outfit.getOutfit(db=clothes, outfit=myOutfit, bpNeeded=[1])
+#outfit.printClothesNames(myOutfit)

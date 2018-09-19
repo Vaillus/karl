@@ -80,7 +80,7 @@ def generateBayes(db):
 	clothes = outfit.getOutfit(db)
 	for cloth in clothes:
 		print(cloth['name'])
-	choice = query_yes_no("Voulé vou maitre cette outfitte?")
+	choice = query_yes_no("Aimez-vous cet outfit?")
 
 	print(makeDecision(choice))
 	return True

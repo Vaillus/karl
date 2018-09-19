@@ -26,19 +26,19 @@ def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = l
 
 			clothes = np.array(getClothesbyCat(db,category))
 
-			outfit.append(getBestClotheBP(clothes, bpNeeded))
+			outfit.extend(getBestClotheBP(clothes, bpNeeded))
 
 
 	"""if only outfit and categories are specified"""
 	if len(outfit) and len(categories) and not(len(bpNeeded)) :
 		for category in categories:
 
-			outfit.append(getRandClothe(db,category))
+			outfit.extend(getRandClothe(db,category))
 
 
 	"""if the outfit and bodyparts needed are specified""" #to improve
 	if len(outfit) and not(len(categories)) and len(bpNeeded) :
-		outfit.append(getBestClotheBP(db, bpNeeded))
+		outfit.extend(getBestClotheBP(db, bpNeeded))
 
 
 	"""if categories and bodyparts needed are specified"""
@@ -47,20 +47,20 @@ def getOutfit(db, outfit = list(), categories = [], bpNeeded = [], undesired = l
 
 			clothes = np.array(getClothesbyCat(db,category))
 
-			outfit.append(getBestClotheBP(clothes, bpNeeded))
+			outfit.extend(getBestClotheBP(clothes, bpNeeded))
 
 
 	"""if categories are specified"""
 	if not(len(outfit)) and len(categories) and not(len(bpNeeded)) :
 		for category in categories:
 
-			outfit.append(getRandClothe(db,category))
+			outfit.extend(getRandClothe(db,category))
 
 
 	"""if the bodyparts needed are specified"""
 	if not(len(outfit)) and not(len(categories)) and len(bpNeeded) :
 
-		outfit.append(getBestClotheBP(db, bpNeeded))
+		outfit.extend(getBestClotheBP(db, bpNeeded))
 
 
 	"""if nothing is specified"""
@@ -191,3 +191,8 @@ def checkOutfitConflict(db, outfit, categories, bodyPartsNeeded, undesired) :
 	db = newdb
 
 	return [db, outfit, categories, bodyPartsNeeded]
+
+#input : a list of clothes | the function returns
+def printClothesNames(outfit):
+	for cloth in outfit:
+		print(cloth['name'])
