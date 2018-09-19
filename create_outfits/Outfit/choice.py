@@ -87,4 +87,3 @@ def generateBayes(db):
 	return True
 
 generateBayes(testConnection.getDataBase())
->>>>>>> 557c978f4e264b1eb7c0cc000e56d7aa9e7b64a9
