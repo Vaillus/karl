@@ -68,9 +68,14 @@ def get_outfit(db, outfit = list(), categories = [], bp_needed = [], undesired =
 
 
 
-#takes a clothes dataset and a clothe category, sends back all the clothes of this category
 def get_clothes_by_cat(db, cat):
-	clothes = list()
+	"""
+	takes a clothes dataset and a clothe category, sends back all the clothes of this category
+	:param db: clothes dataset
+	:param cat: category of clothes
+	:return: clothes of the specified category
+	""""
+    clothes = list()
     for i in range(0, len(db)-1):
         if (db[i]['category'] == cat):
             clothes.append(db[i])
