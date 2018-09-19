@@ -23,18 +23,18 @@ class JSONEncoder(json.JSONEncoder):
 
 def make_decision(decision):
 
-    cursor = testConnection.getDataBase()
+    cursor = testConnection.get_clothes_database()
     myoutfit = outfit.get_outfit(cursor)
 
     data = {}
     clothes = {}
-    idc = 0
-    for clothe in myoutfit:
-        clothes['idc'+str(idc)] = clothe['_id']
-        idc = idc + 1
+
+    for idc, clothe in enumerate(myoutfit):
+        data['idc'+str(idc)] = clothe['_id']
 
     data['decision'] = decision
-    data['clothes'] = clothes
+
+    print(data.keys())
 
     return data
 
@@ -82,6 +82,7 @@ def generate_bayes(db):
     choice = query_yes_no("Aimez-vous cet outfit?")
 
     print(make_decision(choice))
+    testConnection.insert_document_in_collection(make_decision(choice),"decision")
     return True
 
-generate_bayes(testConnection.getDataBase())
+generate_bayes(testConnection.get_clothes_database())

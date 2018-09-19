@@ -1,34 +1,53 @@
 #  import json
 import outfit
 import pymongo
+import sys
+
+sys.path.append("../")
 import re
+
 
 #  To make the following line work, make sure that mongod is running on your computer.
 #  To do so, install mongoDB and run the command: 'sudo service mongod start'
 
-#returns the dataBase. Not to be used on the long term
-def getDataBase():
-	"""
+# returns the dataBase. Not to be used on the long term
 
-	:return: clothes database
-	"""
-	file = open("donnéesSecrètes.txt")
-	secretData = re.sub('\\n', '', file.read())
+def connect_database():
+    file = open("/home/hugo/Documents/karl/python_functions/Outfit/donnéesSecrètes.txt")
+    secretData = re.sub('\\n', '', file.read())
 
-	client = pymongo.MongoClient(secretData)
-	db = client.karl
-	collection = db.cloths
-	print(collection.find()[0])
-	clothes = list(collection.find({}))
-	return clothes
+    client = pymongo.MongoClient(secretData)
+    db = client.karl
 
-#with open('clothes.json') as json_data:
-#    clothes = json.load(json_data)
+    return db
 
-clothes = getDataBase()
-#print(clothes)
 
-myOutfit = outfit.getOutfit(clothes)
-#outfit.printClothesNames(myOutfit)
-myOutfit = outfit.getOutfit(db=clothes, outfit=myOutfit, bpNeeded=[1])
-#outfit.printClothesNames(myOutfit)
+def get_clothes_database():
+    """
+
+    :return: clothes database
+    """
+    db = connect_database()
+    collection = db.cloths
+    clothes = list(collection.find({}))
+
+    return clothes
+
+
+def insert_document_in_collection(document,collection):
+    """
+
+    :param document: document to insert
+    :param collection: name of the collection where to insert tuple
+    :return:
+    """
+    db = connect_database()
+    collection = db[collection]
+    print(collection.find()[0].keys())
+    post_id = collection.insert_one(document).inserted_id
+
+
+clothes = get_clothes_database()
+
+myOutfit = outfit.get_outfit(clothes)
+

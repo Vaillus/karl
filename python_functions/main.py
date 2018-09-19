@@ -1,11 +1,9 @@
 import sys
-import variables
+import python_functions.variables as variables
 import python_functions.Outfit.outfit as outfit
-sys.path.remove('/home/benoit/Sensego/Missions/user_profile')
-sys.path.append(var_static.DATABASE)
+print(variables.DATABASE)
+sys.path.append(variables.DATABASE)
 print(sys.path)
 if __name__ == '__main__':
-    a = 2
-    file = open("clothes.json")
+    file = open("{}clothes.json".format(variables.DATABASE))
     outfit.get_outfit()
-
