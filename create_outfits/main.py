@@ -1,5 +1,7 @@
+import sys, os
 
-
+import create_outfits.Outfit.outfit as outfit
 
 if __name__ == '__main__':
-    pass
+    outfit.get_outfit()
+
