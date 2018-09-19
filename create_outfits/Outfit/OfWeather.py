@@ -6,8 +6,14 @@ Created on Tue Mar 20 16:14:05 2018
 @author: hugo
 """
 
-#function that takes climate, temperature and clothes as argument, and returns appropriate clothes
 def clothesWeather(clothes, temp, clim):
+    """
+    function that takes climate, temperature and clothes as argument, and returns appropriate clothes
+    :param clothes: clothes collection
+    :param temp: actual temperature
+    :param clim: actual climate
+    :return: clothes that matches the climate and the temperature
+    """
     newClothes = list()
     for cloth in clothes:
         #add the fundamental clothes
