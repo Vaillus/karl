@@ -6,28 +6,28 @@ Created on Tue Mar 20 16:14:05 2018
 @author: hugo
 """
 
-def clothesWeather(clothes, temp, clim):
+
+def clothes_weather(clothes, temp, clim):
     """
     function that takes climate, temperature and clothes as argument, and returns appropriate clothes
     :param clothes: clothes collection
     :param temp: actual temperature
     :param clim: actual climate
-    :return: clothes that matches the climate and the temperature
+    :return: clothes that match the climate and the temperature
     """
-    newClothes = list()
+    new_clothes = list()
     for cloth in clothes:
-        #add the fundamental clothes
-        #if cloth['category'] = "tshirt":
+        # add the fundamental clothes
+        # if cloth['category'] = "tshirt":
         #   newClothes.append(cloth)
 
         if temp > 23:
             if cloth['temperature'] < 5:
-                newClothes.append(cloth)
+                new_clothes.append(cloth)
         elif temp < 10:
             if cloth['category'] != "short":
-                newClothes.append(cloth)
+                new_clothes.append(cloth)
         else:
-            newClothes.append(cloth)
+            new_clothes.append(cloth)
 
-    return newClothes
-
+    return new_clothes
