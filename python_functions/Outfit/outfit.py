@@ -17,7 +17,6 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 	"""
 	[db, outfit, categories, bp_needed] = check_outfit_conflict(db, outfit, categories, bp_needed, undesired)
 	
-	"""if outfit, categories and bodyparts needed are specified"""
 	if len(outfit) and len(categories) and len(bp_needed):
 		for category in categories:
 
@@ -26,19 +25,16 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 			outfit.extend(get_clothes_by_cat(clothes, bp_needed))
 
 
-	"""if only outfit and categories are specified"""
 	if len(outfit) and len(categories) and not(len(bp_needed)):
 		for category in categories:
 
 			outfit.extend(get_rand_clothes(db, category))
 
 
-	"""if the outfit and bodyparts needed are specified""" #TODO
 	if len(outfit) and not(len(categories)) and len(bp_needed):
 		outfit.extend(get_best_clothe_bp(db, bp_needed))
 
 
-	"""if categories and bodyparts needed are specified"""
 	if not(len(outfit)) and len(categories) and len(bp_needed):
 
 		for category in categories:
@@ -46,20 +42,17 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 			outfit.extend(get_best_clothe_bp(clothes, bp_needed))
 
 
-	"""if categories are specified"""
 	if not(len(outfit)) and len(categories) and not(len(bp_needed)):
 		for category in categories:
 
 			outfit.extend(get_rand_clothes(db, category))
 
 
-	"""if the bodyparts needed are specified"""
 	if not(len(outfit)) and not(len(categories)) and len(bp_needed):
 
 		outfit.extend(get_best_clothe_bp(db, bp_needed))
 
 
-	"""if nothing is specified"""
 	if not(len(categories)) and not(len(bp_needed)):
 
 		outfit = make_simple_outfit(db, outfit)
@@ -71,16 +64,15 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 def get_clothes_by_cat(db, cat):
 	"""
 	takes a clothes dataset and a clothe category, sends back all the clothes of this category
-	:param db: clothes dataset
-	:param cat: category of clothes
-	:return: clothes of the specified category
-	""""
-    clothes = list()
-    for i in range(0, len(db)-1):
-        if (db[i]['category'] == cat):
-            clothes.append(db[i])
-    return clothes
-
+	:param db:
+	:param cat:
+	:return:
+	"""
+	clothes = list()
+	for i in range(0, len(db)-1):
+		if (db[i]['category'] == cat):
+			clothes.append(db[i])
+	return clothes
 
 
 def get_rand_clothes(db, cat=[]):
