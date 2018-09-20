@@ -1,9 +1,9 @@
 import sys
-import python_functions.variables as variables
-import python_functions.Outfit.outfit as outfit
-print(variables.DATABASE)
+import variables
 sys.path.append(variables.DATABASE)
-print(sys.path)
+import python_functions.Outfit.outfit as outfit
+
+
 if __name__ == '__main__':
-    file = open("{}clothes.json".format(variables.DATABASE))
+    file = open("{}data.json".format(variables.DATABASE))
     outfit.get_outfit()
