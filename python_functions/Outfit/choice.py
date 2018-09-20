@@ -40,19 +40,19 @@ def makeDecision(decision):
     return data
 
 
-
-"""
-Ask a yes/no question via raw_input() and return their answer.
-
-"question" is a string that is presented to the user.
-"default" is the presumed answer if the user just hits <Enter>.
-	It must be "yes" (the default), "no" or None (meaning
-	an answer is required of the user).
-
-The "answer" return value is True for "yes" or False for "no".
-"""
 def query_yes_no(question, default="yes"):
 
+    """
+    Ask a yes/no question via raw_input() and return their answer.
+    "question" is a string that is presented to the user.
+    "default" is the presumed answer if the user just hits <Enter>.
+	It must be "yes" (the default), "no" or None (meaning
+	an answer is required of the user).
+    The "answer" return value is True for "yes" or False for "no".
+    :param question:
+    :param default:
+    :return:
+    """
     valid = {"yes": True, "y": True, "ye": True,
              "no": False, "n": False}
     if default is None:
@@ -81,10 +81,9 @@ def generateBayes(db):
 	clothes = outfit.getOutfit(db)
 	for cloth in clothes:
 		print(cloth['name'])
-	choice = query_yes_no("Voulé vou maitre cette outfitte?")
+	choice = query_yes_no("Aimez-vous cet outfit?")
 
 	print(makeDecision(choice))
 	return True
 
 generateBayes(testConnection.getDataBase())
->>>>>>> 557c978f4e264b1eb7c0cc000e56d7aa9e7b64a9
