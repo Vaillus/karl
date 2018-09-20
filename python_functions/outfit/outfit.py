@@ -157,7 +157,7 @@ def make_simple_outfit(db, outfit):
 	makes a default outfit with a tshirt, a jacket and pants
 	:param db:
 	:param outfit:
-	:return:
+	:return: simple outfit
 	"""
 	categories = [['pants','tshirt','jacket'],[True, True, True]]
 
