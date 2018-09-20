@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var config = require('../config/database');
 
-mongoose.connect('mongodb://Admin:admin@ds139459.mlab.com:39459/karl', { useNewUrlParser: true });
+mongoose.connect(`mongodb://${config.username}:${config.password}@${config.databaseAddress}:${config.port}/karl`, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
