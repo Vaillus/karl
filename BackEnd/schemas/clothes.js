@@ -8,7 +8,7 @@ var schema = new Schema({
   colors: [ String ],
   fabrics: [ String ],
   temperature: Number
-});
+}, {versionKey: 'version'});
 
 
 module.exports = client.model('cloths', schema);

@@ -4,7 +4,6 @@ const Clothe = require('../schemas/clothes');
 
 
 exports.create = function(values) {
-  console.log("values :", values);
   return Clothe.create(values, function (err, res) {
     if (err) return handleError(err);
     // saved!
@@ -29,7 +28,6 @@ exports.update = function(body) {
 };
 
 exports.delete = function(values) {
-  console.log("values :", values);
   return Clothe.deleteMany(values, function (err) {
     if (err) return handleError(err);
     // deleted clothe document
