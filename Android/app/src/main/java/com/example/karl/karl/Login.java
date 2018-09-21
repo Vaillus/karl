@@ -1,10 +1,14 @@
 package com.example.karl.karl;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -23,27 +27,38 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG ="Sign In Activity " ;
     private static final int RC_SIGN_IN = 9001;
     GoogleSignInClient mGoogleSignInClient;
-
+    Animation animation;
+    ImageView logokarl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.login);
+
+        //creation du bouton google+
+
+        logokarl = findViewById(R.id.logo);
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
+        //demande de l'email a l'utilisateur
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
 
+
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
+
+        animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_in);
 
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
+                //logokarl.startAnimation(animation);
                 signIn();
                 break;
         }

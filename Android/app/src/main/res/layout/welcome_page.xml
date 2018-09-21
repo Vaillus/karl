@@ -43,7 +43,9 @@
         android:layout_marginTop="350dp"
         android:fontFamily="@font/poiret_one"
         android:gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
