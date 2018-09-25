@@ -4,7 +4,7 @@ Outfit Creator
 import numpy as np
 from random import randint
 
-
+a = 2
 def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list()) :
 	"""
 	Returns an outfit made with clothes from database db, given:
