@@ -3,3 +3,10 @@ pseudo
 age
 genre
 
+partie google:
+id
+email
+prénom
+nom
+full nom
+
