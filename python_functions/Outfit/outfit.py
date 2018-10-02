@@ -4,7 +4,7 @@ Outfit Creator
 import numpy as np
 from random import randint
 
-a = 2
+
 def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list()) :
 	"""
 	Returns an outfit made with clothes from database db, given:
@@ -17,6 +17,7 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 	"""
 	[db, outfit, categories, bp_needed] = check_outfit_conflict(db, outfit, categories, bp_needed, undesired)
 	
+	"""if outfit, categories and bodyparts needed are specified"""
 	if len(outfit) and len(categories) and len(bp_needed):
 		for category in categories:
 
@@ -25,16 +26,19 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 			outfit.extend(get_clothes_by_cat(clothes, bp_needed))
 
 
+	"""if only outfit and categories are specified"""
 	if len(outfit) and len(categories) and not(len(bp_needed)):
 		for category in categories:
 
 			outfit.extend(get_rand_clothes(db, category))
 
 
+	"""if the outfit and bodyparts needed are specified""" #TODO
 	if len(outfit) and not(len(categories)) and len(bp_needed):
 		outfit.extend(get_best_clothe_bp(db, bp_needed))
 
 
+	"""if categories and bodyparts needed are specified"""
 	if not(len(outfit)) and len(categories) and len(bp_needed):
 
 		for category in categories:
@@ -42,17 +46,20 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 			outfit.extend(get_best_clothe_bp(clothes, bp_needed))
 
 
+	"""if categories are specified"""
 	if not(len(outfit)) and len(categories) and not(len(bp_needed)):
 		for category in categories:
 
 			outfit.extend(get_rand_clothes(db, category))
 
 
+	"""if the bodyparts needed are specified"""
 	if not(len(outfit)) and not(len(categories)) and len(bp_needed):
 
 		outfit.extend(get_best_clothe_bp(db, bp_needed))
 
 
+	"""if nothing is specified"""
 	if not(len(categories)) and not(len(bp_needed)):
 
 		outfit = make_simple_outfit(db, outfit)
@@ -60,17 +67,16 @@ def get_outfit(db, outfit=list(), categories=[], bp_needed=[], undesired=list())
 	return outfit
 
 
-
 def get_clothes_by_cat(db, cat):
 	"""
-	takes a clothes dataset and a clothe category, sends back all the clothes of this category
+²	takes a clothes dataset and a clothe category, sends back all the clothes of this category
 	:param db:
 	:param cat:
 	:return:
 	"""
 	clothes = list()
-	for i in range(0, len(db)-1):
-		if (db[i]['category'] == cat):
+	for i in range(len(db)-1):
+		if db[i]['category'] == cat:
 			clothes.append(db[i])
 	return clothes
 
