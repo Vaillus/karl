@@ -3,6 +3,10 @@ var spawn = require('child_process').spawn,
     data = [1,2,3,4,5,6,7,8,9],
     dataString = '';
 
+var fs = require("fs");
+var content = fs.readFileSync("content.txt");
+console.log(content)
+
 /*Here we are saying that every time our node application receives data from the python process output stream(on 'data'), we want to convert that received data into a string and append it to the overall dataString.*/
 py.stdout.on('data', function(data){
   dataString += data.toString();
