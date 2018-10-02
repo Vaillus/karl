@@ -8,7 +8,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var first = require('./routes/first');
 var clothes = require('./routes/clothes'); //ajouter un truc comme ca quand on crée une nouvelle "class"
+var users = require('./routes/users');
 app.use('/api/first', first); 
 app.use('/api/clothes', clothes); //ajouter un truc comme ca quand on crée une nouvelle "class"
+app.use('/api/users', users);
 
 module.exports = app;
