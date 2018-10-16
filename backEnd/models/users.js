@@ -1,14 +1,19 @@
 const util = require('util');
 const mongoose = require('mongoose');
 const User = require('../schemas/users');
+const Taste = require('../schemas/tastes');
 
 
 exports.create = function(values) {
   return User.create(values, function (err, res) {
-    if (err) return handleError(err);
+    if (err){
+      console.log("err :", err);
+      return err;
+    }
     // saved!
   });
 };
+
 
 exports.get = function(values) {
   var query = User.find(null);
@@ -24,6 +29,14 @@ exports.update = function(body) {
   return User.updateOne({ _id: body._id }, body, function(err, res) {
     // Updated at most one doc, `res.modifiedCount` contains the number
     // of docs that MongoDB updated
+  });
+};
+
+exports.addTaste = function(body) {
+  return User.findOne({_id: body._id}, function(err, usr){
+    usr.tastes.push(body.tatses)
+    usr.save(function(err) {
+    });
   });
 };
 

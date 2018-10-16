@@ -34,6 +34,23 @@ const update = async (req, res, next) => {
   }
 };
 
+const addTaste = async (req, res, next) => {
+  id = req.body._id;
+  tastes = req.body.tastes;
+  console.log("type of tastes :", typeof(tastes));
+  if(id && tastes) {
+    return model.get({_id: id}).then(result => {
+        if (result && result.length > 0) {
+            return model.addTaste(req.body).then(Updated => {
+                return res.status(200).json({message: 'success.'});
+            });
+        } else return res.status(400).json({error: 'Invalid data.'});
+    }).catch(function(e){
+        next(e);
+    });
+  }
+};
+
 const del = async (req, res, next) => {
   try{
       var checkIfUserExist = (await model.get(req.body));
@@ -57,3 +74,4 @@ exports.create = create;
 exports.get = get;
 exports.update = update;
 exports.del = del;
+exports.addTaste = addTaste;
