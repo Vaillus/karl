@@ -13,8 +13,10 @@ var userSchema = new Schema({
 }, {versionKey: 'version'});
 
 var tasteSchema = new Schema({
-    decision :
-})
+    decision : Boolean,
+    clothes : [String]
+    user : {type: Schema.ObjectId, ref: 'User'}
+});
 
 
 module.exports = client.model('users', schema);
