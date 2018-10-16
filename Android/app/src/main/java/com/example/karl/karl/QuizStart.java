@@ -14,6 +14,7 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -37,19 +38,23 @@ public class QuizStart extends AppCompatActivity {
         // Example of a call to a native method
         tv = findViewById(R.id.sample_text);
         String str = "toto";
-        result =new RequestTask().execute("http://18.184.156.66:8000/api/clothes");
+
         try {
+            result =new RequestTask().execute("http://18.184.156.66:8000/api/clothes?category=shirt");
             tv.setText(result.get());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
+            tv.setText("RIEN N'A ETE RETOURNE");
+
         }
+
     }
 
 
     /**
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
-     */
+     */ 
     public native String stringFromJNI();
 
 }
