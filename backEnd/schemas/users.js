@@ -14,6 +14,4 @@ var schema = new Schema({
 }, {versionKey: 'version'});
 
 
-
-
 module.exports = client.model('users', schema);
