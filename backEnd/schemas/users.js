@@ -1,7 +1,8 @@
 var client = require('../helpers/mongoClient');
 var Schema = client.Schema;
+var TasteSchema = require('./tastes');
 
-var userSchema = new Schema({
+var schema = new Schema({
 	idGoogle : Number,
 	firstName : String,
 	lastName : String,
@@ -9,12 +10,10 @@ var userSchema = new Schema({
 	email : String,
 	age : Number,
 	genre : String,
-	tastes : [{type: Schema.ObjectId, ref: 'Task'}]
+	tastes : [TasteSchema]
 }, {versionKey: 'version'});
 
-var tasteSchema = new Schema({
-    decision :
-})
+
 
 
 module.exports = client.model('users', schema);

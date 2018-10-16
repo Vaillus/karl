@@ -8,6 +8,8 @@ router.get('/', controller.get);
 
 router.put('/', controller.update);
 
+router.put('/addTaste/', controller.addTaste);
+
 router.delete('/', controller.del);
 
 
